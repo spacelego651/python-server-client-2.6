@@ -7,7 +7,7 @@ import socket
 MAX_PACKET = 1024
 
 my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# connecting to the server and getting an input
+# connecting to the server
 try:
     my_socket.connect(('127.0.0.1', 2976))
     while True:

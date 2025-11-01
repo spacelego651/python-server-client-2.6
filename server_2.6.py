@@ -27,7 +27,7 @@ QUEUE_LEN = 1
 MAX_PACKET = 1024
 
 
-server_name = "incredibly magnificent beautful smart and humble server"
+SERVER_NAME = "incredibly magnificent beautful smart and humble server"
 my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 my_socket.bind(('0.0.0.0', 2976))
 my_socket.listen(QUEUE_LEN)
@@ -44,7 +44,7 @@ def name():
     """
     the function returns the server name
     """
-    return server_name
+    return SERVER_NAME
 
 
 def main():
@@ -75,12 +75,17 @@ def main():
         except socket.error as err:
             logging.error('received socket error on server socket' + str(err))
             print('received socket error on server socket' + str(err))
+        finally:
+            client_socket.close()
+            logging.info("closed client socket")
+            my_socket.close()
+            logging.info(closed server socket)
 
 
 
 
 if __name__ == "__main__":
-    assert(name() == server_name)
+    assert(name() == SERVER_NAME)
     assert(rand() in range(1,11))
     main()
     
